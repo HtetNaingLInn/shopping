@@ -156,7 +156,7 @@
                         </a>
                     <li>
                         <li class="">
-                            <a href="{{route('category.index')}}">
+                            <a href="{{route('subcategory.list')}}">
                                 <span class="pcoded-mtext">Product SubCategory</span>
                             </a>
                         <li>

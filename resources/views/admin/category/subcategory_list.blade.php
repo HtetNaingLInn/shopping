@@ -17,7 +17,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Product Category List</h4>
+                        <h4>Product SubCategory List</h4>
 
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                         </li>
                         <li class="breadcrumb-item"><a href="#!">Product Setting</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!"> Main Category List</a>
+                        <li class="breadcrumb-item"><a href="#!">Product SubCategory</a>
                         </li>
                     </ul>
                 </div>
@@ -57,29 +57,29 @@
                         <th class="w-25">logo</th>
                         <th>Name</th>
                         <th class="w-25">Image</th>
-                        <th>Detail</th>
+                        <th>Category</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @php $i=1; @endphp
 
-                    @foreach($categories as $category)
+                    @foreach($subcategories as $subcategory)
                     <tr>
                         <td>@php echo $i;$i++; @endphp</td>
                         <td>
-                            <img src="{{asset('storage/category/'.$category->logo)}}" alt="" class="w-25">
+                            <img src="{{asset('storage/subcategory/'.$subcategory->logo)}}" alt="" class="w-25">
                         </td>
-                        <td>{{$category->name}}</td>
+                        <td>{{$subcategory->name}}</td>
                         <td>
-                            <img src="{{asset('storage/category/'.$category->image)}}" alt="" class="w-25">
+                            <img src="{{asset('storage/subcategory/'.$subcategory->image)}}" alt="" class="w-25">
                         </td>
                         <td>
-                            <a href="{{Route('subcategory.index',$category->id)}}"><button class="btn btn-primary btn-round">Sub-Category</button></a>
+                            <a href=""><button class="btn btn-primary btn-round">{{$subcategory->category}}</button></a>
                         </td>
                         <td>
 
-                            <a href="{{Route('category.edit',$category->id)}}"><button class="btn btn-info btn-round">Edit</button></a>
+                            <a href="{{Route('category.edit',$subcategory->id)}}"><button class="btn btn-info btn-round">Edit</button></a>
                         </td>
                     </tr>
                     @endforeach
