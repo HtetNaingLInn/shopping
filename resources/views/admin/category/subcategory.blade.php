@@ -17,7 +17,7 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Main Category</h4>
+                        <h4>Sub Category List</h4>
 
                     </div>
                 </div>
@@ -32,6 +32,8 @@
                         </li>
                         <li class="breadcrumb-item"><a href="#!"> Main Category List</a>
                         </li>
+                        <li class="breadcrumb-item"><a href="#!"> Sub Category List</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -39,12 +41,14 @@
     </div>
     @include('admin.error')
     <!-- Page-header end -->
-        <div class="mb-3">
-            <a href="{{route('category.create')}}" class="btn btn-primary btn-round mt-3 mb-3">
-                <i class="fas fa-plus"></i> Add
+    <div class="mb-3">
+        <a href="{{route('category.index')}}">
+            <button class="btn btn-primary btn-round mt-3 mb-3">Back</button>
+        </a>
+
+            <a href="{{route('subcategory.create',$cat)}}" >
+                <button class="btn btn-info btn-round mt-3 mb-3 float-right">Add</button>
             </a>
-            {{-- <a href="{{Route('contact_us.index', ['is_read' => 'false'])}}" class="btn btn-outline-info btn-round">Unread</a>
-            <a href="{{Route('contact_us.index', ['is_read' => 'true'])}}" class="btn btn-outline-dark btn-round">Read</a> --}}
 
         </div>
         <!-- Page-body start -->
@@ -64,22 +68,21 @@
                 <tbody>
                     @php $i=1; @endphp
 
-                    @foreach($categories as $category)
+                    @foreach($data as $subcategory)
                     <tr>
                         <td>@php echo $i;$i++; @endphp</td>
                         <td>
-                            <img src="{{asset('storage/category/'.$category->logo)}}" alt="" class="w-25">
+                            <img src="{{asset('storage/subcategory/'.$subcategory->logo)}}" alt="" class="w-25">
                         </td>
-                        <td>{{$category->name}}</td>
+                        <td>{{$subcategory->name}}</td>
                         <td>
-                            <img src="{{asset('storage/category/'.$category->image)}}" alt="" class="w-25">
-                        </td>
-                        <td>
-                            <a href="{{Route('subcategory.index',$category->id)}}"><button class="btn btn-primary btn-round">Sub-Category</button></a>
+                            <img src="{{asset('storage/subcategory/'.$subcategory->image)}}" alt="" class="w-25">
                         </td>
                         <td>
-
-                            <a href="{{Route('category.edit',$category->id)}}"><button class="btn btn-info btn-round">Edit</button></a>
+                            <a href="{{Route('category.index')}}"><button class="btn btn-primary btn-round">Category</button></a>
+                        </td>
+                        <td>
+                            <a href="{{Route('subcategory.edit',[$cat,$subcategory->id])}}"><button class="btn btn-info btn-round">Edit</button></a>
                         </td>
                     </tr>
                     @endforeach

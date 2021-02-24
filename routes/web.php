@@ -51,13 +51,20 @@ Route::post('admin/contact_us/{id}', [Contact_UsController::class, 'read'])->nam
 
 
 // Category
-Route::get('view_category_and_sub-category_list', [CategoryController::class, 'subCategoryList']);
+// Route::get('view_category_and_sub-category_list', [CategoryController::class, 'subCategoryList']);
 Route::get('category', [CategoryController::class, 'index'])->name('category.index');
 Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
 Route::post('category/store', [CategoryController::class, 'store'])->name('category.store');
 Route::get('category/edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
 Route::post('category/update/{id}',[CategoryController::class,'update'])->name('category.update');
 
+// Sub Category
+
+Route::get('category/{id}/subcategory',[CategoryController::class,'subCategoryIndex'])->name('subcategory.index');
+Route::get('category/{id}/subcategory/create', [CategoryController::class, 'subCategoryCreate'])->name('subcategory.create');
+Route::post('category/{id}/subcategory/store', [CategoryController::class, 'subCategoryStore'])->name('subcategory.store');
+Route::get('category/{id}/subcategory/edit/{id1}',[CategoryController::class,'subCategoryEdit'])->name('subcategory.edit');
+Route::post('category/{id}/subcategory/update/{id1}',[CategoryController::class,'subCategoryUpdate'])->name('subcategory.update');
 
 
 

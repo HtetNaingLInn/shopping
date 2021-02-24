@@ -17,8 +17,8 @@
             <div class="col-lg-8">
                 <div class="page-header-title">
                     <div class="d-inline">
-                        <h4>Update Category</h4>
-                        <a href="{{Route('category.index')}}">
+                        <h4>Create New Sub Category</h4>
+                        <a href="{{Route('subcategory.index',$cat)}}">
                             <button class="btn btn-primary btn-round mt-4">Back</button>
                         </a>
                     </div>
@@ -34,14 +34,13 @@
                         </li>
                         <li class="breadcrumb-item"><a href="#!">Category</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#!">Update Category</a>
+                        <li class="breadcrumb-item"><a href="#!">Create Sub Category</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-
     @include('admin.error')
     <!-- Page-header end -->
         <!-- Page-body start -->
@@ -54,35 +53,35 @@
                 <div class="card">
 
                     <div class="card-header">
-                        <h4 class="text-info text-center">Update Category</h4>
+                        <h4 class="text-info text-center">Create Sub Category</h4>
                     </div>
                     <div class="card-body">
-                        <form  method="POST" action="{{Route('category.update',$category->id)}}" enctype="multipart/form-data">
+                        <form  method="POST" action="{{Route('subcategory.store',$cat)}}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <img src="{{asset('storage/category/'.$category->logo)}}" style="width:100px !important;" id="preview">
+                                <img src="" style="width:100px !important;" id="preview">
                             </div>
                             <div class="form-group">
-                                <label for="File1">Category Logo </label>
+                                <label for="File1">Sub Category Logo </label>
                                 <input type="file" class="form-control" name="logo" id="file" accept="image/*" onchange="previewImage();"
                                     style="border:1px solid rgb(228, 135, 30);">
                             </div>
 
                             <div class="form-group">
-                                <label for="name">Category Name</label>
-                                <input type="text"  class="form-control" value="{{$category->name}}"
+                                <label for="name">Sub Category Name</label>
+                                <input type="text"  class="form-control" placeholder="Enter Category Name"
                                     name="name">
                             </div>
 
                             <div class="form-group">
-                                <img src="{{asset('storage/category/'.$category->image)}}" style="width:100px !important;" id="preview1">
+                                <img src="" style="width:100px !important;" id="preview1">
                             </div>
                             <div class="form-group">
-                                <label for="File1">Category Image </label>
+                                <label for="File1">Sub Category Image </label>
                                 <input type="file" class="form-control" name="image" id="image" accept="image/*" onchange="previewImage1();"
                                     style="border:1px solid rgb(91, 238, 206);">
                             </div>
-                              <button type="submit" class="btn btn-info btn-round mt-3 float-right">Save</button>
+                              <button type="submit" class="btn btn-info btn-round mt-3 float-right">Create</button>
                         </form>
                     </div>
                 </div>

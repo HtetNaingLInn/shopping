@@ -137,7 +137,7 @@
                 </ul>
             </li>
         </ul>
-        <div class="pcoded-navigatio-lavel">Product</div>
+
         <ul class="pcoded-item pcoded-left-item">
             <li class="pcoded-hasmenu pcoded-trigger">
                 <a href="javascript:void(0)">
@@ -165,7 +165,7 @@
 
         </ul>
 
-        <div class="pcoded-navigatio-lavel">Setting</div>
+
         <ul class="pcoded-item pcoded-left-item">
             <li class="pcoded-hasmenu pcoded-trigger">
                 <a href="javascript:void(0)">

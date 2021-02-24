@@ -19,7 +19,7 @@
                     <div class="d-inline">
                         <h4>Create Main Category</h4>
                         <a href="{{Route('category.index')}}">
-                            <button class="btn btn-info btn-round mt-4">Back</button>
+                            <button class="btn btn-primary btn-round mt-4">Back</button>
                         </a>
                     </div>
                 </div>
