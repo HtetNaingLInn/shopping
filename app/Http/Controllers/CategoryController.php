@@ -198,4 +198,10 @@ class CategoryController extends Controller
         ]);
         return redirect(Route('subcategory.index',$category_id))->with('success','Updated Successful');
     }
+
+
+    public function subCategoryList(){
+
+    }
+
 }

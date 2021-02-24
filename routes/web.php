@@ -67,6 +67,8 @@ Route::get('category/{id}/subcategory/edit/{id1}',[CategoryController::class,'su
 Route::post('category/{id}/subcategory/update/{id1}',[CategoryController::class,'subCategoryUpdate'])->name('subcategory.update');
 
 
+Route::get('subcategory',[CategoryController::class,'subCategoryList'])->name('subcategory.list');
+
 
 Route::get('testing',[CityController::class,'index']);
 

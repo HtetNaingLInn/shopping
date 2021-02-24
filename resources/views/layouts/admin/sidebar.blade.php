@@ -147,19 +147,20 @@
                 <ul class="pcoded-submenu">
                     <li class="">
                         <a href="{{Route('website_info.edit',$id=1)}}">
-                            <span class="pcoded-mtext">Product</span>
+                            <span class="pcoded-mtext">Create Product</span>
                         </a>
                     </li>
                     <li class="">
                         <a href="{{route('category.index')}}">
-                            <span class="pcoded-mtext">Category</span>
+                            <span class="pcoded-mtext">Product Category</span>
                         </a>
                     <li>
-                    {{-- <li class=" ">
-                        <a href="{{Route('contact_us.index')}}">
-                            <span class="pcoded-mtext">Contact Us</span>
-                        </a>
-                    </li> --}}
+                        <li class="">
+                            <a href="{{route('category.index')}}">
+                                <span class="pcoded-mtext">Product SubCategory</span>
+                            </a>
+                        <li>
+
                 </ul>
             </li>
 
