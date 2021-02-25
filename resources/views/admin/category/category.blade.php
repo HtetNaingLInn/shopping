@@ -58,6 +58,7 @@
                         <th>Name</th>
                         <th class="w-25">Image</th>
                         <th>Detail</th>
+                        <th>SubCategories</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -75,7 +76,12 @@
                             <img src="{{asset('storage/category/'.$category->image)}}" alt="" class="w-25">
                         </td>
                         <td>
-                            <a href="{{Route('subcategory.index',$category->id)}}"><button class="btn btn-primary btn-round">Sub-Category</button></a>
+                            <a href="{{Route('subcategory.index',$category->id)}}"><button class="btn btn-warning btn-round">Sub-Category</button></a>
+                        </td>
+                        <td>
+                            @foreach ($category->categories as $subcategory)
+                            <button class="btn btn-warning btn-round btn-sm">{{$subcategory->name}}</button>
+                            @endforeach
                         </td>
                         <td>
 

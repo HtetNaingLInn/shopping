@@ -40,11 +40,10 @@
     @include('admin.error')
     <!-- Page-header end -->
         <div class="mb-3">
-            <a href="{{route('category.create')}}" class="btn btn-primary btn-round mt-3 mb-3">
+            <a href="{{route('subcategory.create.list')}}" class="btn btn-primary btn-round mt-3 mb-3">
                 <i class="fas fa-plus"></i> Add
             </a>
-            {{-- <a href="{{Route('contact_us.index', ['is_read' => 'false'])}}" class="btn btn-outline-info btn-round">Unread</a>
-            <a href="{{Route('contact_us.index', ['is_read' => 'true'])}}" class="btn btn-outline-dark btn-round">Read</a> --}}
+
 
         </div>
         <!-- Page-body start -->
@@ -75,11 +74,19 @@
                             <img src="{{asset('storage/subcategory/'.$subcategory->image)}}" alt="" class="w-25">
                         </td>
                         <td>
-                            <a href=""><button class="btn btn-primary btn-round">{{$subcategory->category}}</button></a>
+                            @foreach ($categories as $category)
+
+                            @if ($category->id == $subcategory->category_id)
+                            <a href=""><button class="btn btn-warning btn-round">{{$category->name}}</button></a>
+                            @endif
+
+                            @endforeach
+
+
                         </td>
                         <td>
 
-                            <a href="{{Route('category.edit',$subcategory->id)}}"><button class="btn btn-info btn-round">Edit</button></a>
+                            <a href="{{Route('subcategory.edit.list',$subcategory->id)}}"><button class="btn btn-info btn-round">Edit</button></a>
                         </td>
                     </tr>
                     @endforeach

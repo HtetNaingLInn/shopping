@@ -68,6 +68,11 @@ Route::post('category/{id}/subcategory/update/{id1}',[CategoryController::class,
 
 
 Route::get('subcategory',[CategoryController::class,'subCategoryList'])->name('subcategory.list');
+Route::get('subcategory/create',[CategoryController::class,'subCategoryCreateFromList'])->name('subcategory.create.list');
+Route::post('subcategory/store',[CategoryController::class,'subCategoryStoreFromList'])->name('subcategory.store.list');
+Route::get('subcategory/edit/{id}',[CategoryController::class,'subCategoryEditFromList'])->name('subcategory.edit.list');
+Route::post('subcategory/update/{id}',[CategoryController::class,'subCategoryUpdateFromList'])->name('subcategory.update.list');
+
 
 
 Route::get('testing',[CityController::class,'index']);

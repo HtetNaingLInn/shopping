@@ -10,8 +10,6 @@ class CategoryController extends Controller
 
     public function index()
     {
-        // $data = Category::all();
-        // return view('admin.category.category', compact('data'));
         // with(subCategories) can call all level of category_id
         // with(categories) can call one level of category_id
         $categories = Category::whereNull('category_id')
@@ -123,12 +121,19 @@ class CategoryController extends Controller
         return view('admin.category.subcategory_create', compact('cat'));
     }
 
+
+
+
+
     public function subCategoryStore(Request $request, $id)
     {
+
         $cat = $id;
+
         $this->validate(request(), [
             'name' => 'required',
         ]);
+
 
         $logo = $request->logo;
         if ($logo) {
@@ -153,6 +158,8 @@ class CategoryController extends Controller
         return redirect(Route('subcategory.index', $cat))->with('success', 'SubCategory Created Successful');
 
     }
+
+
 
     public function subCategoryEdit($category, $id)
     {
@@ -200,8 +207,97 @@ class CategoryController extends Controller
     public function subCategoryList()
     {
         $subcategories = Category::whereNotNull('category_id')->get();
+        // $subcategories = Category::whereNotNull('category_id')
+        // ->with('categories')
+        // ->get();
+        $categories=Category::all();
 
-        return view('admin.category.subcategory_list', compact('subcategories'));
+        // dd($subcategories);
+
+        return view('admin.category.subcategory_list', compact('subcategories','categories'));
+    }
+
+
+    public function subCategoryCreateFromList(){
+        $categories=Category::whereNull('category_id')
+        ->with('subCategories')
+        ->get();
+        return view('admin.category.subcategory_list_create',compact('categories'));
+    }
+
+
+    public function subCategoryStoreFromList(Request $request){
+        $this->validate(request(), [
+            'name' => 'required',
+        ]);
+
+
+        $logo = $request->logo;
+        if ($logo) {
+            $logoName = time() . '_' . $logo->getClientOriginalName();
+            $logo->storeAs('subcategory', $logoName, 'public');
+        } else {
+            $logoName = null;
+        }
+        $image = $request->image;
+        if ($image) {
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('subcategory', $imageName, 'public');
+        } else {
+            $imageName = null;
+        }
+        Category::create([
+            'logo' => $logoName,
+            'image' => $imageName,
+            'category_id' => $request->category_id,
+            'name' => $request->name,
+        ]);
+        return redirect(Route('subcategory.list'))->with('success', 'SubCategory Created Successful');
+    }
+
+    public function subCategoryEditFromList($id)
+    {
+        $subcategory = Category::findOrFail($id);
+        $categories=Category::whereNull('category_id')
+        ->with('subCategories')
+        ->get();
+        return view('admin.category.subcategory_list_edit', compact('subcategory','categories'));
+
+    }
+
+
+    public function subCategoryUpdateFromList(Request $request,$id){
+
+        $this->validate(request(), [
+            'name' => 'required',
+        ]);
+        $category = Category::findOrfail($id);
+
+        $logo = $request->logo;
+
+        if ($logo) {
+            $logo = $request->logo;
+            $logoName = time() . '_' . $logo->getClientOriginalName();
+            $logo->storeAs('subcategory', $logoName, 'public');
+        } else {
+            $logoName = $category->logo;
+
+        }
+        $image = $request->image;
+        if ($image) {
+            $image = $request->image;
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('subcategory', $imageName, 'public');
+        } else {
+            $imageName = $category->image;
+        }
+        $category->update([
+            'logo' => $logoName,
+            'image' => $imageName,
+            'category_id' => $request->category_id,
+            'name' => $request->name,
+        ]);
+        return redirect(Route('subcategory.list'))->with('success', 'Updated Successful');
     }
 
 }
